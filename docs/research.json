@@ -23,17 +23,6 @@
       "link": "https://bremontix.xyz/lab/research/rd10/"
     },
     {
-      "id": 3,
-      "name": "Bremontix Empreseria",
-      "category": "Negotialis",
-      "icon": "fa-network-wired",
-      "description": "Coordinación oversees project coordination, ensuring alignment and collaboration across different teams and departments.",
-      "location": "Santo Domingo",
-      "employees": "2,100",
-      "revenue": "$1.8B",
-      "link": "https://bremontix.xyz/lab/research/grupo-be/"
-    },
-    {
       "id": 4,
       "name": "Laboratorium Arbitristae",
       "category": "Laboratory",
