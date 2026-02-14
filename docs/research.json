@@ -92,6 +92,17 @@
       "employees": "1,100",
       "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/tecne/"
+    },
+    {
+      "id": 10,
+      "name": "Index Gentium",
+      "category": "Arbitristae",
+      "icon": "fa-globe",
+      "description": "Country Catalog: A comprehensive catalog of detailed country representations and state transitions, supporting in-depth study and comparative of/between social regions.",
+      "location": "Santo Domingo",
+      "employees": "",
+      "revenue": "",
+      "link": "https://bremontix.xyz/lab/research/country"
     }
   ]
 }
