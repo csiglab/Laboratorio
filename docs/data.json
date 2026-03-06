@@ -1,0 +1,139 @@
+{
+  "entities": [
+    {
+      "id": 1,
+      "name": "República Dominicana 2.0",
+      "category": "Proiectum",
+      "lab": "Arbitristae",
+      "icon": "fa-flask",
+      "tags": ["R&D", "innovation", "science", "technology", "experimentation", "Dominican Republic"],
+      "description": "Focuses on research and development, conducting experiments and innovation in science and technology.",
+      "link": "https://bremontix.xyz/lab/research/rd20/"
+    },
+    {
+      "id": 2,
+      "name": "Laboratorium Arbitristae",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-network-wired",
+      "tags": ["prototyping", "research", "strategy", "technology", "productivity", "innovation", "Dominican Republic"],
+      "description": "Espacio para prototipar ideas, investigando y diseñando estrategias para la grandeza tecnológica y productiva de la República Dominicana. Escudo de Armas - Laboratorio Arbitrista",
+      "link": "https://www.bremontix.xyz/lab/ar"
+    },
+    {
+      "id": 3,
+      "parent": 2,
+      "name": "Laboratorium Productivum et Mercatorum",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-briefcase",
+      "tags": ["production systems", "business design", "convergence plans", "innovation", "market experimentation", "productive frontier"],
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "link": "https://www.bremontix.xyz/lab/pro/"
+    },
+    {
+      "id": 4,
+      "parent": 2,
+      "name": "Laboratorium Maius Legalis",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-scale-balanced",
+      "tags": ["legal systems", "regulation", "policy design", "business law", "production systems", "innovation"],
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "link": "https://www.bremontix.xyz/lab/legal/"
+    },
+    {
+      "id": 5,
+      "parent": 2,
+      "name": "Laboratorium Maius Studiorum Hispanicorum",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-scroll",
+      "tags": ["Hispanic studies", "research", "culture", "education", "productive systems", "innovation"],
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "link": "https://www.bremontix.xyz/lab/hispan/"
+    },
+    {
+      "id": 6,
+      "parent": 2,
+      "name": "Laboratorium Maius Salutis Productorum",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-user-doctor",
+      "tags": ["health", "product safety", "medical research", "production systems", "innovation"],
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "link": "https://www.bremontix.xyz/lab/salud/"
+    },
+    {
+      "id": 7,
+      "parent": 2,
+      "name": "Laboratorium Maius Technicorum",
+      "category": "Laboratorium",
+      "lab": "Laboratorium",
+      "icon": "fa-robot",
+      "tags": ["engineering", "technology", "technical systems", "innovation", "automation", "production systems"],
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "link": "https://www.bremontix.xyz/lab/tecne/"
+    },
+    {
+      "id": 8,
+      "name": "Index Gentium",
+      "category": "Proiectum",
+      "lab": "Arbitristae",
+      "icon": "fa-globe",
+      "tags": ["countries", "state transitions", "comparative studies", "social systems", "geopolitics", "global analysis"],
+      "description": "A comprehensive catalog of detailed country representations and state transitions, supporting in-depth study and comparative of/between social regions.",
+      "link": "https://bremontix.xyz/lab/research/country"
+    },
+    {
+      "id": 9,
+      "name": "Spatium Productorum",
+      "category": "Proiectum",
+      "lab": "Productivum et Mercatorum",
+      "icon": "fa-boxes",
+      "tags": ["products", "market history", "economic analysis", "trade", "goods and services", "innovation"],
+      "description": "Product Space is a representation of all products (goods and services) present in the market throughout history.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+    },
+    {
+      "id": 10,
+      "name": "Spatium Technicae",
+      "category": "Proiectum",
+      "lab": "Productivum et Mercatorum",
+      "icon": "fa-cogs",
+      "tags": ["technology", "technical objects", "production techniques", "innovation", "industrial analysis", "engineering"],
+      "description": "Technique Space is a representation of the technical core (techniques and technical objects) underpinning production throughout history.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+    },
+    {
+      "id": 11,
+      "name": "Spatium Patentes",
+      "category": "Proiectum",
+      "lab": "Productivum et Mercatorum",
+      "icon": "fa-lightbulb",
+      "tags": ["patents", "R&D", "intellectual property", "technology development", "innovation", "research"],
+      "description": "Patent Space represents all research and technical work conducted by companies to support product development.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+    },
+    {
+      "id": 12,
+      "name": "Spatium Investigationis",
+      "category": "Proiectum",
+      "lab": "Arbitristae",
+      "icon": "fa-flask",
+      "tags": ["research", "science", "technical studies", "innovation", "non-enterprise research"],
+      "description": "Research Space represents the technical or scientific research conducted by non-enterprise entities.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+    },
+    {
+      "id": 13,
+      "name": "Spatium Societatis",
+      "category": "Proiectum",
+      "lab": "Productivum et Mercatorum",
+      "icon": "fa-building",
+      "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
+      "description": "Firm Space represents all firms within the global economy.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+    }
+  ]
+}

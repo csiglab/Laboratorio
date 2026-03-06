@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bremontix · Laboratorium</title>
+  <title>Bremontix · Laboratorium · Research Index</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,8 +103,8 @@
       position: fixed;
       top: 1.5rem;
       right: 1.5rem;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--card);
@@ -124,252 +124,58 @@
     .dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
     .dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
 
-    /* Search Module */
-    .search-module { position: relative; }
+    /* Search & Tags */
     .search-input { transition: border-color 150ms ease-out, box-shadow 150ms ease-out, background-color 200ms ease-out; background-color: var(--input-bg); }
     .search-input:hover { border-color: var(--border-hover); }
     .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
 
-    /* Tag Row */
-    .tag-row-wrapper { position: relative; width: 100%; margin-top: 12px; }
-    .tag-row { display: flex; align-items: center; gap: 6px; }
-    
-    .tag-scroll-btn {
-      flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--muted);
-      cursor: pointer; transition: all 120ms ease-out; opacity: 0; pointer-events: none;
-    }
-    .tag-scroll-btn.visible { opacity: 1; pointer-events: auto; }
-    .tag-scroll-btn:hover { border-color: var(--border-hover); color: var(--fg); background: var(--tag-bg); }
-    
-    .tag-scroll-container { flex: 1; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
+    .tag-scroll-container { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
     .tag-scroll-container::-webkit-scrollbar { display: none; }
-    .tag-container { display: flex; flex-wrap: nowrap; gap: 8px; padding: 2px 0; }
-
-    .tag-fade-left, .tag-fade-right {
-      position: absolute; top: 0; bottom: 0; width: 32px; pointer-events: none; z-index: 5; opacity: 0; transition: opacity 200ms ease-out;
-    }
-    .tag-fade-left { left: 40px; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 40%, transparent 100%); }
-    .tag-fade-right { right: 40px; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 40%, transparent 100%); }
-    .tag-fade-left.visible, .tag-fade-right.visible { opacity: 1; }
+    .tag-container { display: flex; flex-wrap: nowrap; gap: 8px; padding: 2px 0; justify-content: center; }
 
     .tag-pill {
-      display: inline-flex; align-items: center; padding: 5px 12px; font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; font-weight: 400; letter-spacing: 0.04em; color: var(--muted);
-      background: transparent; border: 1px solid var(--border); border-radius: 4px;
-      white-space: nowrap; cursor: pointer; transition: all 100ms ease-out; flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 100ms ease-out;
+      flex-shrink: 0;
     }
     .tag-pill:hover:not(.selected) { color: var(--fg); border-color: var(--border-hover); background: var(--tag-bg); }
     .tag-pill.selected { color: var(--fg); background: var(--tag-bg); border-color: var(--tag-selected-border); font-weight: 500; }
 
-    /* Dropdown Panel - PUSHES CONTENT DOWN (Relative Position) */
+    /* Dropdown */
     .search-dropdown {
-      position: relative; /* Back to relative to push content */
-      margin-top: 8px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-top: 6px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 16px 48px -8px var(--dropdown-shadow), 0 4px 12px -4px var(--dropdown-shadow);
-      
-      /* Display none/block for document flow */
+      border-radius: 8px;
+      box-shadow: 0 12px 32px var(--dropdown-shadow);
       display: none;
       opacity: 0;
       transform: translateY(-8px);
-      transition: opacity 180ms ease-out, transform 180ms ease-out;
+      transition: opacity 150ms ease-out, transform 150ms ease-out;
       overflow: hidden;
+      max-height: 420px;
+      z-index: 50;
     }
-    .search-dropdown.open { 
-      display: block; 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
-
-    /* Dropdown Header - Laboratory style */
-    .dropdown-header {
-      padding: 14px 18px;
-      background: linear-gradient(180deg, var(--tag-bg) 0%, transparent 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    .dropdown-header-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .dropdown-header-title::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 1px;
-      transform: rotate(45deg);
-    }
-    .dropdown-stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .stat-item {
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-    }
-    .stat-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--fg);
-    }
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Results Section */
-    .dropdown-results-label {
-      padding: 10px 18px 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      background: var(--card);
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-    .dropdown-results {
-      max-height: 320px;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding: 0 10px 10px;
-    }
-    .dropdown-results::-webkit-scrollbar {
-      width: 6px;
-    }
-    .dropdown-results::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .dropdown-results::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 3px;
-    }
-    .dropdown-results::-webkit-scrollbar-thumb:hover {
-      background: var(--border-hover);
-    }
-
-    /* Dropdown Item - Matches card aesthetic */
-    .search-dropdown-item {
-      position: relative;
-      padding: 12px 14px;
-      margin-top: 6px;
-      cursor: pointer;
-      transition: all 120ms ease-out;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background: var(--card);
-    }
-    .search-dropdown-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 4px;
-      bottom: 4px;
-      width: 2px;
-      background: var(--accent);
-      border-radius: 1px;
-      opacity: 0;
-      transition: opacity 120ms ease-out;
-    }
-    .search-dropdown-item:first-child { margin-top: 0; }
-    .search-dropdown-item:hover,
-    .search-dropdown-item.active {
-      background: var(--tag-bg);
-      border-color: var(--border);
-      transform: translateX(2px);
-    }
-    .search-dropdown-item:hover::before,
-    .search-dropdown-item.active::before {
-      opacity: 1;
-    }
-
-    .dropdown-item-icon {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--tag-bg);
-      border-radius: 8px;
-      color: var(--muted);
-      font-size: 14px;
-      transition: color 120ms ease-out, background-color 120ms ease-out;
-    }
-    .search-dropdown-item:hover .dropdown-item-icon {
-      color: var(--accent);
-    }
-    .dropdown-item-content { flex: 1; min-width: 0; }
-    .dropdown-item-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--fg);
-      margin-bottom: 2px;
-      transition: color 120ms ease-out;
-    }
-    .search-dropdown-item:hover .dropdown-item-name {
-      color: var(--accent);
-    }
-    .dropdown-item-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .dropdown-item-category {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-    }
-    .dropdown-item-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      padding: 2px 6px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      color: var(--muted);
-    }
-
-    /* Empty State */
-    .dropdown-empty {
-      padding: 32px 18px;
-      text-align: center;
-    }
-    .dropdown-empty-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--tag-bg);
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-    .dropdown-empty-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 16px;
-      font-style: italic;
-      color: var(--muted);
-    }
+    .search-dropdown.open { display: block; opacity: 1; transform: translateY(0); }
+    .dropdown-results { max-height: 300px; overflow-y: auto; overscroll-behavior: contain; }
+    .search-dropdown-item { padding: 10px 14px; cursor: pointer; transition: background-color 100ms ease-out; border-bottom: 1px solid var(--border); }
+    .search-dropdown-item:last-child { border-bottom: none; }
+    .search-dropdown-item:hover, .search-dropdown-item.active { background-color: var(--tag-bg); }
 
     /* Card */
     .entity-card { transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 200ms ease-out; background-color: var(--card); border-color: var(--border); }
@@ -377,12 +183,7 @@
     .entity-card:hover::before { opacity: 1; }
     .entity-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -8px var(--dropdown-shadow); }
     .entity-card:hover .card-title { color: var(--accent); }
-
-    /* View CTA */
-    .view-cta { transition: color 150ms ease-out; color: var(--accent); }
-    .view-cta:hover { color: var(--accent-dark); }
-    .view-cta:hover .view-arrow { transform: translateX(3px); }
-    .view-arrow { transition: transform 150ms ease-out; }
+    .card-tag { background: var(--tag-bg); color: var(--muted); }
 
     /* Footer */
     .footer-link { text-decoration: none; color: #8A9DB0; transition: color 150ms; }
@@ -395,10 +196,10 @@
   
   <!-- Theme Toggle -->
   <button class="theme-toggle animate-entrance" id="themeToggle" aria-label="Toggle dark mode" type="button">
-    <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
     </svg>
-    <svg class="icon-sun w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="icon-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0a3.75 3.75 0 017.5 0z"/>
     </svg>
   </button>
@@ -428,13 +229,13 @@
     <section class="pb-8 px-6">
       <div class="max-w-xl mx-auto animate-entrance delay-4">
         
-        <div class="search-module" id="searchModule">
+        <div class="search-module relative mb-4" id="searchModule">
           <div class="relative">
             <input
               type="text" 
               id="searchInput"
-              class="search-input w-full h-12 px-4 pr-10 text-sm bg-card border border-border rounded-lg shadow-sm"
-              placeholder="Search entities..."
+              class="search-input w-full h-10 px-4 pr-10 text-sm bg-card border border-border rounded-lg shadow-sm"
+              placeholder="Search..."
               autocomplete="off"
               aria-label="Search entities"
               aria-expanded="false"
@@ -446,33 +247,19 @@
             </svg>
           </div>
 
-          <!-- Tag Row -->
-          <div class="tag-row-wrapper" id="tagRowWrapper">
-            <div class="tag-fade-left" id="tagFadeLeft"></div>
-            <div class="tag-fade-right" id="tagFadeRight"></div>
-            <div class="tag-row" role="tablist">
-              <button class="tag-scroll-btn" id="tagScrollLeft" aria-label="Scroll tags left" type="button">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-              </button>
-              <div class="tag-scroll-container" id="tagScrollContainer">
-                <div class="tag-container" id="tagContainer">
-                  <button class="tag-pill selected" data-filter="all" role="tab" aria-selected="true">All</button>
-                </div>
-              </div>
-              <button class="tag-scroll-btn" id="tagScrollRight" aria-label="Scroll tags right" type="button">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Dropdown (Now pushes content down) -->
+          <!-- Dropdown -->
           <div id="searchDropdown" class="search-dropdown" role="listbox">
-            <div class="dropdown-header">
-              <div class="dropdown-header-title">Registry Summary</div>
-              <div class="dropdown-stats-row" id="metadataStats"></div>
-            </div>
-            <div class="dropdown-results-label" id="resultsLabel">Matching Entities</div>
             <div class="dropdown-results" id="dropdownResults" role="listbox"></div>
+          </div>
+        </div>
+
+        <div class="tag-row-wrapper flex justify-center">
+          <div class="tag-row" role="tablist">
+            <div class="tag-scroll-container" id="tagScrollContainer">
+              <div class="tag-container" id="tagContainer">
+                <button class="tag-pill selected" data-filter="all" role="tab" aria-selected="true">All</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -482,7 +269,9 @@
     <!-- Grid -->
     <section class="pb-12 px-6">
       <div class="max-w-7xl mx-auto">
+        <!-- 3 column grid -->
         <div id="entityGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" role="list" aria-label="Entity registry">
+          <!-- Loading state -->
           <div class="col-span-3 text-center py-20 text-muted">Loading registry data...</div>
         </div>
         <div id="emptyState" class="hidden py-20 text-center"><p class="text-muted">No matching entities found.</p></div>
@@ -509,19 +298,26 @@
   <!-- FOOTER -->
   <footer class="site-footer mt-8 py-8 px-6 border-t" style="background-color: #0B1A2B; border-color: rgba(90, 112, 137, 0.15);">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Left: Brand -->
       <div class="text-center sm:text-left">
         <p class="font-display text-sm tracking-wide" style="color: #E8EDF3;">
           BREMONTIX <span class="mx-2 opacity-50">|</span> <span class="italic" style="color: #B8C5D4;">Laboratorium</span>
         </p>
       </div>
+      
+      <!-- Center: Links -->
       <nav class="flex items-center gap-6">
         <a href="#" class="footer-link text-xs">About</a>
-        <a href="research.html" class="footer-link text-xs">Research Index</a>
+        <a href="#" class="footer-link text-xs">Methodology</a>
         <a href="#" class="footer-link text-xs">Contact</a>
       </nav>
+
+      <!-- Right: Ending Phrase -->
       <div class="text-center sm:text-right">
         <p class="font-display text-xs italic" style="color: #5A7089;">Ordo ex comparatione.</p>
       </div>
+      
     </div>
   </footer>
 
@@ -545,7 +341,7 @@
     let entities = [];
     let currentFilter = 'all';
     let currentPage = 1;
-    const itemsPerPage = 9;
+    const itemsPerPage = 9; // Fits 3 rows of 3 perfectly
     let filteredEntities = [];
     let dropdownOpen = false;
     let activeIndex = -1;
@@ -555,8 +351,6 @@
     const searchInput = document.getElementById('searchInput');
     const searchDropdown = document.getElementById('searchDropdown');
     const dropdownResults = document.getElementById('dropdownResults');
-    const metadataStats = document.getElementById('metadataStats');
-    const resultsLabel = document.getElementById('resultsLabel');
     const entityGrid = document.getElementById('entityGrid');
     const emptyState = document.getElementById('emptyState');
     const pageIndicator = document.getElementById('pageIndicator');
@@ -564,88 +358,49 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const tagContainer = document.getElementById('tagContainer');
-    const tagScrollContainer = document.getElementById('tagScrollContainer');
-    const tagScrollLeft = document.getElementById('tagScrollLeft');
-    const tagScrollRight = document.getElementById('tagScrollRight');
-    const tagFadeLeft = document.getElementById('tagFadeLeft');
-    const tagFadeRight = document.getElementById('tagFadeRight');
 
-    // Initialize
-    fetch('data.json')
-      .then(response => {
+    // Data Loading
+    async function loadData() {
+      try {
+        const response = await fetch('research.json');
         if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(data => {
-        entities = data.entities || [];
-        loadData();
-      })
-      .catch(error => {
-        console.error('Error loading data.json:', error);
-        entityGrid.innerHTML = '<div class="col-span-3 text-center py-20 text-muted">Error: Could not load data.json.</div>';
-      });
+        
+        const data = await response.json();
+        
+        // The JSON structure provided earlier was { "firms": [...] }
+        const rawEntities = data.entities || data;
 
-    function loadData() {
-      filteredEntities = [...entities];
-      renderTags();
-      updateTagScrollState();
-      renderGrid();
-    }
+        entities = rawEntities.map(e => ({ 
+          ...e, 
+          tags: [e.category] // Create tags array from category for the UI logic
+        }));
+        
+        filteredEntities = [...entities];
+        
+        renderTags();
+        renderGrid();
 
-    // Tag Scroll Logic
-    function updateTagScrollState() {
-      const scrollEl = tagScrollContainer;
-      const scrollWidth = scrollEl.scrollWidth;
-      const clientWidth = scrollEl.clientWidth;
-      const scrollLeft = scrollEl.scrollLeft;
-      const hasOverflow = scrollWidth > clientWidth + 1;
-      const canScrollLeft = scrollLeft > 2;
-      const canScrollRight = scrollLeft < scrollWidth - clientWidth - 2;
-
-      tagScrollLeft.classList.toggle('visible', hasOverflow && canScrollLeft);
-      tagScrollRight.classList.toggle('visible', hasOverflow && canScrollRight);
-      tagFadeLeft.classList.toggle('visible', canScrollLeft);
-      tagFadeRight.classList.toggle('visible', canScrollRight);
-    }
-
-    function scrollTags(direction) {
-      const scrollAmount = 150;
-      const targetScroll = tagScrollContainer.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
-      tagScrollContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
-    }
-
-    tagScrollLeft.addEventListener('click', () => scrollTags('left'));
-    tagScrollRight.addEventListener('click', () => scrollTags('right'));
-    tagScrollContainer.addEventListener('scroll', updateTagScrollState, { passive: true });
-
-    function getTagCounts() {
-      const counts = {};
-      entities.forEach(e => {
-        if (Array.isArray(e.tags)) {
-          e.tags.forEach(t => counts[t] = (counts[t] || 0) + 1);
-        }
-      });
-      return counts;
+      } catch (error) {
+        console.error('Error loading data:', error);
+        entityGrid.innerHTML = `<div class="col-span-3 text-center py-20 text-muted">
+          Failed to load registry data. Please ensure 'research.json' exists and you are running this on a web server.
+        </div>`;
+      }
     }
 
     function renderTags() {
-      const tagCounts = getTagCounts();
-      const tagNames = Object.keys(tagCounts);
-      
+      const counts = {};
+      entities.forEach(e => e.tags.forEach(t => counts[t] = (counts[t] || 0) + 1));
       const allTag = tagContainer.querySelector('[data-filter="all"]');
       tagContainer.innerHTML = '';
       tagContainer.appendChild(allTag);
-      
-      tagNames.forEach(t => {
+      Object.keys(counts).forEach(t => {
         const tag = document.createElement('button');
         tag.className = 'tag-pill';
         tag.setAttribute('data-filter', t);
-        tag.setAttribute('role', 'tab');
-        tag.setAttribute('aria-selected', 'false');
         tag.textContent = t;
         tagContainer.appendChild(tag);
       });
-      
       attachTagListeners();
     }
 
@@ -662,77 +417,28 @@
       });
     }
 
-    function renderMetadata(matchCount) {
-      const totalEntities = entities.length;
-      const tagCounts = getTagCounts();
-      const topTags = Object.entries(tagCounts).slice(0, 3);
-      
-      let statsHTML = `<div class="stat-item"><span class="stat-value">${totalEntities}</span><span class="stat-label">Total</span></div>`;
-      topTags.forEach(([tag, count]) => {
-        statsHTML += `<div class="stat-item"><span class="stat-value">${count}</span><span class="stat-label">${tag}</span></div>`;
-      });
-      
-      metadataStats.innerHTML = statsHTML;
-      resultsLabel.textContent = matchCount > 0 ? `${matchCount} Matching ${matchCount === 1 ? 'Entity' : 'Entities'}` : 'No Matches';
-    }
-
-    function openDropdown() { 
-      dropdownOpen = true; 
-      searchDropdown.classList.add('open'); 
-      searchInput.setAttribute('aria-expanded', 'true'); 
-    }
-    
-    function closeDropdown() { 
-      dropdownOpen = false; 
-      activeIndex = -1; 
-      searchDropdown.classList.remove('open'); 
-      searchInput.setAttribute('aria-expanded', 'false'); 
-    }
+    function openDropdown() { dropdownOpen = true; searchDropdown.classList.add('open'); searchInput.setAttribute('aria-expanded', 'true'); }
+    function closeDropdown() { dropdownOpen = false; activeIndex = -1; searchDropdown.classList.remove('open'); searchInput.setAttribute('aria-expanded', 'false'); }
 
     function renderDropdown(term) {
       if (term.length < 2) { closeDropdown(); return; }
-      
-      currentMatches = entities.filter(e => 
-        e.name.toLowerCase().includes(term.toLowerCase()) || 
-        e.tags.some(t => t.toLowerCase().includes(term.toLowerCase())) ||
-        e.category.toLowerCase().includes(term.toLowerCase())
-      );
-      
-      renderMetadata(currentMatches.length);
+      currentMatches = entities.filter(e => e.name.toLowerCase().includes(term.toLowerCase()) || e.tags.some(t => t.toLowerCase().includes(term.toLowerCase())) || e.location.toLowerCase().includes(term.toLowerCase()));
       
       if (currentMatches.length === 0) {
-        dropdownResults.innerHTML = `
-          <div class="dropdown-empty">
-            <div class="dropdown-empty-icon">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.35-4.35"/>
-              </svg>
-            </div>
-            <p class="dropdown-empty-text">No entities found for "${term}"</p>
-          </div>
-        `;
+        dropdownResults.innerHTML = `<div class="px-4 py-4 text-center text-sm text-muted">No entities found</div>`;
       } else {
         dropdownResults.innerHTML = currentMatches.map((e, i) => `
-          <div class="search-dropdown-item" data-index="${i}" role="option">
+          <div class="search-dropdown-item" data-index="${i}">
             <div class="flex items-center gap-3">
-              <div class="dropdown-item-icon">
-                <i class="fas ${e.icon}"></i>
-              </div>
-              <div class="dropdown-item-content">
-                <p class="dropdown-item-name">${e.name}</p>
-                <div class="dropdown-item-meta">
-                  <span class="dropdown-item-category">${e.category}</span>
-                  <span class="dropdown-item-tag">${e.lab}</span>
-                </div>
+              <span class="text-base w-5 text-center"><i class="fas ${e.icon}"></i></span>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-fg text-sm truncate">${e.name}</p>
+                <p class="text-[10px] text-muted">${e.category} &middot; ${e.type}</p>
               </div>
             </div>
           </div>
         `).join('');
-        
-        dropdownResults.querySelectorAll('.search-dropdown-item').forEach((item, idx) => {
-          item.addEventListener('click', () => selectItem(idx));
-        });
+        dropdownResults.querySelectorAll('.search-dropdown-item').forEach((item, idx) => item.addEventListener('click', () => selectItem(idx)));
       }
       openDropdown();
     }
@@ -751,15 +457,16 @@
           <div class="flex items-start justify-between mb-3">
             <div class="flex items-center gap-2">
               <span class="text-base w-5 text-center"><i class="fas ${entity.icon}"></i></span>
+              <div class="flex flex-wrap gap-1">${entity.tags.map(t => `<span class="card-tag inline-block px-2 py-0.5 text-[10px] font-mono tracking-wide rounded">${t}</span>`).join('')}</div>
             </div>
           </div>
           <h3 class="card-title font-display text-lg font-medium text-fg mb-1 transition-colors duration-150">${entity.name}</h3>
           <p class="text-sm text-muted leading-relaxed mb-3 line-clamp-2">${entity.description}</p>
           <div class="flex items-center justify-between pt-3 border-t border-border">
-            <span class="font-mono text-[10px] text-muted">${entity.lab}</span>
+            <span class="font-mono text-[10px] text-muted">${entity.type}</span>
             <a href="${entity.link}" target="_blank" class="view-cta inline-flex items-center gap-1 text-xs font-medium">
               <span>View</span>
-              <svg class="w-3 h-3 view-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </article>
@@ -780,13 +487,11 @@
 
     function renderPagination() {
       const totalPages = Math.ceil(filteredEntities.length / itemsPerPage);
-      pageIndicator.innerHTML = Array.from({length: totalPages}, (_, i) => i+1).map(p => 
-        `<button class="page-dot ${p === currentPage ? 'w-6 h-2' : 'w-2 h-2 bg-border hover:bg-muted'} rounded-full transition-all" style="${p === currentPage ? 'background-color: var(--accent);' : ''}" data-page="${p}"></button>`
+      pageIndicator.innerHTML = Array.from({length: totalPages}, (_, i) => i+1).map(i => 
+        `<button class="page-dot ${i === currentPage ? 'w-6 h-2' : 'w-2 h-2 bg-border hover:bg-muted'} rounded-full transition-all" style="${i === currentPage ? 'background-color: var(--accent);' : ''}" data-page="${i}"></button>`
       ).join('');
-      
       prevBtn.disabled = currentPage === 1;
       nextBtn.disabled = currentPage === totalPages;
-      
       pageIndicator.querySelectorAll('.page-dot').forEach(d => d.addEventListener('click', () => { currentPage = parseInt(d.dataset.page); renderGrid(); }));
     }
 
@@ -794,7 +499,7 @@
       const term = searchInput.value.toLowerCase().trim();
       filteredEntities = entities.filter(e => {
         const matchFilter = currentFilter === 'all' || e.tags.includes(currentFilter);
-        const matchSearch = !term || e.name.toLowerCase().includes(term) || e.description.toLowerCase().includes(term) || e.lab.toLowerCase().includes(term);
+        const matchSearch = !term || e.name.toLowerCase().includes(term) || e.description.toLowerCase().includes(term) || e.type.toLowerCase().includes(term);
         return matchFilter && matchSearch;
       });
       currentPage = 1;
@@ -815,7 +520,9 @@
     document.addEventListener('click', (e) => { if (!document.getElementById('searchModule').contains(e.target)) closeDropdown(); });
     prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderGrid(); }});
     nextBtn.addEventListener('click', () => { if (currentPage < Math.ceil(filteredEntities.length / itemsPerPage)) { currentPage++; renderGrid(); }});
-    window.addEventListener('resize', updateTagScrollState);
+
+    // Initialize
+    loadData();
   </script>
 </body>
 </html>

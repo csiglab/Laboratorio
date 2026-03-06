@@ -1,97 +1,113 @@
 {
-  "firms": [
+  "entities": [
     {
       "id": 1,
       "name": "República Dominicana 2.0",
       "category": "Arbitristae",
       "icon": "fa-flask",
       "description": "Focuses on research and development, conducting experiments and innovation in science and technology.",
-      "location": "Santo Domingo",
-      "employees": "2,500+",
-      "revenue": "$850M",
       "link": "https://bremontix.xyz/lab/research/rd20/"
     },
     {
-      "id": 4,
+      "id": 2,
       "name": "Laboratorium Arbitristae",
       "category": "Laboratory",
       "icon": "fa-network-wired",
       "description": "Espacio para prototipar ideas, investigando y diseñando estrategias para la grandeza tecnológica y productiva de la República Dominicana. Escudo de Armas - Laboratorio Arbitrista",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/ar"
     },
     {
-      "id": 5,
-      "parent": 6,
+      "id": 3,
+      "parent": 2,
       "name": "Laboratorium Productivum et Mercatorum",
       "category": "Laboratory",
       "icon": "fa-briefcase",
       "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/pro/"
     },
     {
-      "id": 6,
-      "parent": 6,
+      "id": 4,
+      "parent": 2,
       "name": "Laboratorium Maius Legalis",
       "category": "Laboratory",
       "icon": "fa-scale-balanced",
       "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/legal/"
     },
     {
-      "id": 7,
-      "parent": 6,
+      "id": 5,
+      "parent": 2,
       "name": "Laboratorium Maius Studiorum Hispanicorum",
       "category": "Laboratory",
       "icon": "fa-scroll",
       "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/hispan/"
     },
     {
-      "id": 8,
-      "parent": 6,
+      "id": 6,
+      "parent": 2,
       "name": "Laboratorium Maius Salutis Productorum",
       "category": "Laboratory",
       "icon": "fa-user-doctor",
       "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/salud/"
     },
     {
-      "id": 9,
-      "parent": 6,
+      "id": 7,
+      "parent": 2,
       "name": "Laboratorium Maius Technicorum",
       "category": "Laboratory",
       "icon": "fa-robot",
       "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
       "link": "https://www.bremontix.xyz/lab/tecne/"
     },
     {
-      "id": 10,
+      "id": 8,
       "name": "Index Gentium",
       "category": "Arbitristae",
       "icon": "fa-globe",
       "description": "Country Catalog: A comprehensive catalog of detailed country representations and state transitions, supporting in-depth study and comparative of/between social regions.",
-      "location": "Santo Domingo",
-      "employees": "",
-      "revenue": "",
       "link": "https://bremontix.xyz/lab/research/country"
-    }
+    },
+    {
+        "id": 9,
+        "name": "Spatium Productorum",
+        "category": "Arbitristae",
+        "icon": "fa-boxes",
+        "description": "Product Space is a representation of all products (goods and services) present in the market throughout history.",
+        "link": "https://bremontix.xyz/lab/"
+     },
+     {
+        "id": 10,
+        "name": "Spatium Technicae",
+        "category": "Arbitristae",
+        "icon": "fa-cogs",
+        "description": "Technique Space is a representation of the technical core (techniques and technical objects) underpinning production throughout history.",
+        "link": "https://bremontix.xyz/lab/"
+     },
+     {
+        "id": 11,
+        "name": "Spatium Patentes",
+        "category": "Arbitristae",
+        "icon": "fa-lightbulb",
+        "description": "Patent Space represents all research and technical work conducted by companies to support product development.",
+        "link": "https://bremontix.xyz/lab/"
+     },
+     {
+        "id": 12,
+        "name": "Spatium Investigationis",
+        "category": "Arbitristae",
+        "icon": "fa-flask",
+        "description": "Research Space represents the technical or scientific research conducted by non-enterprise entities.",
+        "link": "https://bremontix.xyz/lab/"
+     },
+     {
+        "id": 13,
+        "name": "Spatium Societatis",
+        "category": "Arbitristae",
+        "icon": "fa-building",
+        "description": "Firm Space represents all firms within the global economy.",
+        "link": "https://bremontix.xyz/lab/"
+     }
   ]
 }
