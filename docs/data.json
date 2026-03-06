@@ -134,6 +134,17 @@
       "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
       "description": "Firm Space represents all firms within the global economy.",
       "link": "https://bremontix.xyz/lab/pending.html"
-    }
+    },
+
+    {
+      "id": 14,
+      "name": "Spatium Generis Organizationis",
+      "category": "Arbitristae",
+      "lab": "Arbitristae",
+      "icon": "fa-sitemap",
+      "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
+      "description": "Spatium Generis Organizationis is a representation of the type of organizations and some of its instances.",
+      "link": "https://bremontix.xyz/lab/pending.html"
+     }
   ]
 }
