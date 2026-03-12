@@ -1,16 +1,6 @@
 {
   "entities": [
     {
-      "id": 1,
-      "name": "República Dominicana 2.0",
-      "category": "Proiectum",
-      "lab": "Arbitristae",
-      "icon": "fa-flask",
-      "tags": ["R&D", "innovation", "science", "technology", "experimentation", "Dominican Republic"],
-      "description": "Focuses on research and development, conducting experiments and innovation in science and technology.",
-      "link": "https://bremontix.xyz/lab/research/rd20/"
-    },
-    {
       "id": 2,
       "name": "Laboratorium Arbitristae",
       "category": "Laboratorium",
@@ -126,25 +116,14 @@
       "link": "https://bremontix.xyz/lab/pending.html"
     },
     {
-      "id": 13,
-      "name": "Spatium Societatis",
-      "category": "Proiectum",
-      "lab": "Productivum et Mercatorum",
-      "icon": "fa-building",
-      "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
-      "description": "Firm Space represents all firms within the global economy.",
-      "link": "https://bremontix.xyz/lab/pending.html"
-    },
-
-    {
       "id": 14,
-      "name": "Spatium Generis Organizationis",
+      "name": "Spatium Organizationis",
       "category": "Arbitristae",
       "lab": "Arbitristae",
       "icon": "fa-sitemap",
       "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
-      "description": "Spatium Generis Organizationis is a representation of the type of organizations and some of its instances.",
-      "link": "https://bremontix.xyz/lab/pending.html"
+      "description": "Spatium Organizationis is a representational space that models organizational types and concrete organizations.",
+      "link": "https://bremontix.xyz/lab/research/actor"
      }
   ]
 }
