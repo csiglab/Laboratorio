@@ -49,6 +49,7 @@
       --card-shadow: rgba(0, 0, 0, 0.06);
       --tag-bg: rgba(30, 41, 59, 0.06);
       --tag-selected-border: #1E293B;
+      --overlay-bg: rgba(0, 0, 0, 0.4);
     }
 
     .dark {
@@ -66,6 +67,7 @@
       --card-shadow: rgba(0, 0, 0, 0.3);
       --tag-bg: rgba(107, 155, 209, 0.12);
       --tag-selected-border: #6B9BD1;
+      --overlay-bg: rgba(0, 0, 0, 0.6);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,11 +100,19 @@
       .animate-entrance { animation: none; opacity: 1; }
     }
 
-    /* Theme Toggle */
-    .theme-toggle {
+    /* Top Right Controls Container */
+    .top-controls {
       position: fixed;
       top: 1.5rem;
       right: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    /* Icon Button Base */
+    .icon-btn {
       width: 44px;
       height: 44px;
       border-radius: 10px;
@@ -114,15 +124,211 @@
       align-items: center;
       justify-content: center;
       transition: all 150ms ease-out;
-      z-index: 100;
       box-shadow: 0 2px 8px var(--card-shadow);
     }
-    .theme-toggle:hover { border-color: var(--border-hover); color: var(--fg); transform: translateY(-1px); }
+    .icon-btn:hover { 
+      border-color: var(--border-hover); 
+      color: var(--fg); 
+      transform: translateY(-1px); 
+      box-shadow: 0 4px 12px var(--card-shadow);
+    }
+    .icon-btn:active { transform: translateY(0); }
+    .icon-btn.active { 
+      border-color: var(--accent); 
+      color: var(--accent); 
+      background: var(--tag-bg);
+    }
+
+    /* Theme Toggle Animation */
     .theme-toggle .icon-sun, .theme-toggle .icon-moon { position: absolute; transition: opacity 200ms ease-out, transform 200ms ease-out; }
     .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
     .theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
     .dark .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
     .dark .theme-toggle .icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+
+    /* Toolbox Dropdown */
+    .toolbox-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 200px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 16px 48px -8px var(--dropdown-shadow), 0 4px 12px -4px var(--dropdown-shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px) scale(0.96);
+      transition: all 180ms ease-out;
+      overflow: hidden;
+    }
+    .toolbox-dropdown.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .toolbox-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: all 100ms ease-out;
+      border-bottom: 1px solid var(--border);
+    }
+    .toolbox-item:last-child { border-bottom: none; }
+    .toolbox-item:hover { background: var(--tag-bg); }
+    .toolbox-item:hover .toolbox-item-icon { color: var(--accent); }
+    .toolbox-item-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color 100ms ease-out;
+    }
+    .toolbox-item-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+    .toolbox-item-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--overlay-bg);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 200ms ease-out, visibility 200ms ease-out;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 24px 64px -12px var(--dropdown-shadow);
+      max-width: 640px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      transform: scale(0.95) translateY(16px);
+      transition: transform 200ms ease-out;
+    }
+    .modal-overlay.open .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--tag-bg) 0%, transparent 100%);
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 100ms ease-out;
+    }
+    .modal-close:hover { border-color: var(--border-hover); color: var(--fg); }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      max-height: calc(80vh - 60px);
+    }
+
+    /* Help Content */
+    .help-section {
+      margin-bottom: 20px;
+    }
+    .help-section:last-child { margin-bottom: 0; }
+    .help-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    .help-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .help-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .help-list li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 6px 0;
+      padding-left: 16px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .help-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 1px;
+      opacity: 0.6;
+    }
+
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--fg);
+    }
 
     /* Search Module */
     .search-module { position: relative; }
@@ -375,15 +581,109 @@
 </head>
 <body>
   
-  <!-- Theme Toggle -->
-  <button class="theme-toggle animate-entrance" id="themeToggle" aria-label="Toggle dark mode" type="button">
-    <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
-    </svg>
-    <svg class="icon-sun w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0a3.75 3.75 0 017.5 0z"/>
-    </svg>
-  </button>
+  <!-- Top Controls -->
+  <div class="top-controls animate-entrance">
+    <!-- Toolbox Button -->
+    <div style="position: relative;">
+      <button class="icon-btn toolbox-toggle" id="toolboxToggle" aria-label="Open toolbox" type="button" aria-expanded="false" aria-controls="toolboxDropdown">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-2.496-3.03A2.75 2.75 0 016.87 11.2a2.75 2.75 0 01.59-3.37l.01-.01A2.75 2.75 0 0111.2 6.87a2.75 2.75 0 013.37.59l.01.01a2.75 2.75 0 01-.59 3.37l-.01.01M11.42 15.17l-5.877 5.877A2.652 2.652 0 009.75 21l5.877-5.877m0 0l2.496-3.03c.317-.384.74-.626 1.208-.766"/>
+        </svg>
+      </button>
+      
+      <!-- Toolbox Dropdown -->
+      <div id="toolboxDropdown" class="toolbox-dropdown" role="menu">
+        <div class="toolbox-item" id="vizTool" role="menuitem" tabindex="0">
+          <div class="toolbox-item-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="toolbox-item-label">Visualize</div>
+            <div class="toolbox-item-desc">View data distribution</div>
+          </div>
+        </div>
+        
+        <div class="toolbox-item" id="helpTool" role="menuitem" tabindex="0">
+          <div class="toolbox-item-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="toolbox-item-label">Help</div>
+            <div class="toolbox-item-desc">Keyboard shortcuts & tips</div>
+          </div>
+        </div>
+        
+        <div class="toolbox-item" id="exportTool" role="menuitem" tabindex="0">
+          <div class="toolbox-item-icon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="toolbox-item-label">Export</div>
+            <div class="toolbox-item-desc">Download filtered data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+      <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+      </svg>
+      <svg class="icon-sun w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0a3.75 3.75 0 017.5 0z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="helpModalTitle">Help & Shortcuts</h2>
+        <button class="modal-close" aria-label="Close modal" type="button">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="help-section">
+          <h3 class="help-heading">Search</h3>
+          <p class="help-text">Use the search bar to find entities by name, category, or tags. The dropdown shows real-time matches as you type.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3 class="help-heading">Filtering</h3>
+          <p class="help-text">Click on any tag pill to filter entities. Combine with search for refined results.</p>
+        </div>
+        
+        <div class="help-section">
+          <h3 class="help-heading">Keyboard Shortcuts</h3>
+          <ul class="help-list">
+            <li><span>Focus search</span> <span><span class="kbd">Ctrl</span> + <span class="kbd">/</span></span></li>
+            <li><span>Toggle dark mode</span> <span><span class="kbd">Ctrl</span> + <span class="kbd">D</span></span></li>
+            <li><span>Open toolbox</span> <span><span class="kbd">Ctrl</span> + <span class="kbd">B</span></span></li>
+            <li><span>Open help</span> <span><span class="kbd">F1</span></span></li>
+            <li><span>Navigate dropdown</span> <span><span class="kbd">↑</span> <span class="kbd">↓</span></span></li>
+            <li><span>Select result</span> <span><span class="kbd">Enter</span></span></li>
+            <li><span>Close modals</span> <span><span class="kbd">Esc</span></span></li>
+          </ul>
+        </div>
+        
+        <div class="help-section">
+          <h3 class="help-heading">About</h3>
+          <p class="help-text">Bremontix Laboratorium is a curated registry of scientific tools, datasets, and resources. Each entity is tagged and categorized for easy discovery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="main-content">
 
@@ -521,6 +821,87 @@
     else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
     themeToggle.addEventListener('click', () => setTheme(htmlElement.classList.contains('dark') ? 'light' : 'dark'));
+
+    // Toolbox Logic
+    const toolboxToggle = document.getElementById('toolboxToggle');
+    const toolboxDropdown = document.getElementById('toolboxDropdown');
+    let toolboxOpen = false;
+
+    function toggleToolbox() {
+      toolboxOpen = !toolboxOpen;
+      toolboxDropdown.classList.toggle('open', toolboxOpen);
+      toolboxToggle.classList.toggle('active', toolboxOpen);
+      toolboxToggle.setAttribute('aria-expanded', toolboxOpen);
+    }
+
+    function closeToolbox() {
+      toolboxOpen = false;
+      toolboxDropdown.classList.remove('open');
+      toolboxToggle.classList.remove('active');
+      toolboxToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toolboxToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleToolbox();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!toolboxDropdown.contains(e.target) && !toolboxToggle.contains(e.target)) {
+        closeToolbox();
+      }
+    });
+
+    // Modal Logic
+    const helpModal = document.getElementById('helpModal');
+
+    function openModal(modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-close').focus();
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    helpModal.querySelectorAll('.modal-close').forEach(btn => {
+      btn.addEventListener('click', () => closeModal(helpModal));
+    });
+
+    helpModal.addEventListener('click', (e) => {
+      if (e.target === helpModal) closeModal(helpModal);
+    });
+
+    // Toolbox Tools
+    document.getElementById('vizTool').addEventListener('click', () => {
+      closeToolbox();
+      window.location.href = 'visualize.html';
+    });
+
+    document.getElementById('helpTool').addEventListener('click', () => {
+      closeToolbox();
+      openModal(helpModal);
+    });
+
+    document.getElementById('exportTool').addEventListener('click', () => {
+      closeToolbox();
+      exportData();
+    });
+
+    function exportData() {
+      const dataStr = JSON.stringify(filteredEntities, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'bremontix-export.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
 
     // State
     let entities = [];
@@ -821,6 +1202,65 @@
     prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderGrid(); }});
     nextBtn.addEventListener('click', () => { if (currentPage < Math.ceil(filteredEntities.length / itemsPerPage)) { currentPage++; renderGrid(); }});
     window.addEventListener('resize', updateTagScrollState);
+
+    // Keyboard Shortcuts (Fixed conflicts)
+    document.addEventListener('keydown', (e) => {
+      const isMod = e.ctrlKey || e.metaKey;
+
+      // Skip if typing in input (unless it's Escape)
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        if (e.key === 'Escape') {
+          closeDropdown();
+          closeModal(helpModal);
+        }
+        return;
+      }
+
+      // Help: F1 (Universal standard, avoids / and ? conflict)
+      if (e.key === 'F1') {
+        e.preventDefault(); // Stop browser help opening
+        openModal(helpModal);
+      }
+      // Toolbox: Ctrl + B (Avoids Ctrl+T new tab conflict)
+      else if (isMod && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleToolbox();
+      }
+      // Theme: Ctrl + D
+      else if (isMod && e.key.toLowerCase() === 'd') {
+        e.preventDefault();
+        setTheme(htmlElement.classList.contains('dark') ? 'light' : 'dark');
+      }
+      // Search: Ctrl + / (Strict check to avoid ?)
+      else if (isMod && e.key === '/' && !e.shiftKey) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+      // Escape: Close everything
+      else if (e.key === 'Escape') {
+        closeToolbox();
+        closeModal(helpModal);
+      }
+    });
+
+    // Trap focus in modals
+    [helpModal].forEach(modal => {
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
