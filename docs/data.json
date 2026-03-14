@@ -1,7 +1,7 @@
 {
   "entities": [
     {
-      "id": 2,
+      "id": 1,
       "name": "Laboratorium Arbitristae",
       "category": "Laboratorium",
       "lab": "Laboratorium",
@@ -11,7 +11,7 @@
       "link": "https://www.bremontix.xyz/lab/ar"
     },
     {
-      "id": 3,
+      "id": 2,
       "parent": 2,
       "name": "Laboratorium Productivum et Mercatorum",
       "category": "Laboratorium",
@@ -22,7 +22,7 @@
       "link": "https://www.bremontix.xyz/lab/pro/"
     },
     {
-      "id": 4,
+      "id": 3,
       "parent": 2,
       "name": "Laboratorium Maius Legalis",
       "category": "Laboratorium",
@@ -33,7 +33,7 @@
       "link": "https://www.bremontix.xyz/lab/legal/"
     },
     {
-      "id": 5,
+      "id": 4,
       "parent": 2,
       "name": "Laboratorium Maius Studiorum Hispanicorum",
       "category": "Laboratorium",
@@ -44,7 +44,7 @@
       "link": "https://www.bremontix.xyz/lab/hispan/"
     },
     {
-      "id": 6,
+      "id": 5,
       "parent": 2,
       "name": "Laboratorium Maius Salutis Productorum",
       "category": "Laboratorium",
@@ -55,7 +55,7 @@
       "link": "https://www.bremontix.xyz/lab/salud/"
     },
     {
-      "id": 7,
+      "id": 6,
       "parent": 2,
       "name": "Laboratorium Maius Technicorum",
       "category": "Laboratorium",
@@ -66,17 +66,37 @@
       "link": "https://www.bremontix.xyz/lab/tecne/"
     },
     {
-      "id": 8,
+      "id": 7,
       "name": "Index Gentium",
       "category": "Proiectum",
       "lab": "Arbitristae",
       "icon": "fa-globe",
       "tags": ["countries", "state transitions", "comparative studies", "social systems", "geopolitics", "global analysis"],
-      "description": "A comprehensive catalog of detailed country representations and state transitions, supporting in-depth study and comparative of/between social regions.",
+      "description": "A comprehensive catalog of detailed country representations and state transitions, supporting in-depth study and comparative analysis between social regions.",
       "link": "https://bremontix.xyz/lab/research/country"
     },
     {
+      "id": 8,
+      "name": "Ontologia Socialis",
+      "category": "Arbitristae",
+      "lab": "Arbitristae",
+      "icon": "fa-diagram-project",
+      "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
+      "description": "A comprehensive social ontology describing actors, institutions, and structural relations within economic and social systems.",
+      "link": "https://bremontix.xyz/lab/research/onto"
+    },
+    {
       "id": 9,
+      "name": "República Dominicana 2.0",
+      "category": "Proiectum",
+      "lab": "Arbitristae",
+      "icon": "fa-flask",
+      "tags": ["R&D", "innovation", "science", "technology", "experimentation", "Dominican Republic"],
+      "description": "Focuses on research and development, conducting experiments and innovation in science and technology.",
+      "link": "https://bremontix.xyz/lab/research/rd20/"
+    },
+    {
+      "id": 10,
       "name": "Spatium Productorum",
       "category": "Proiectum",
       "lab": "Productivum et Mercatorum",
@@ -86,7 +106,7 @@
       "link": "https://bremontix.xyz/lab/pending.html"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Spatium Technicae",
       "category": "Proiectum",
       "lab": "Productivum et Mercatorum",
@@ -96,7 +116,7 @@
       "link": "https://bremontix.xyz/lab/pending.html"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "Spatium Patentes",
       "category": "Proiectum",
       "lab": "Productivum et Mercatorum",
@@ -106,7 +126,7 @@
       "link": "https://bremontix.xyz/lab/pending.html"
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "Spatium Investigationis",
       "category": "Proiectum",
       "lab": "Arbitristae",
@@ -114,16 +134,6 @@
       "tags": ["research", "science", "technical studies", "innovation", "non-enterprise research"],
       "description": "Research Space represents the technical or scientific research conducted by non-enterprise entities.",
       "link": "https://bremontix.xyz/lab/pending.html"
-    },
-    {
-      "id": 14,
-      "name": "Spatium Organizationis",
-      "category": "Arbitristae",
-      "lab": "Arbitristae",
-      "icon": "fa-sitemap",
-      "tags": ["firms", "companies", "economy", "global markets", "business analysis", "industry mapping"],
-      "description": "Spatium Organizationis is a representational space that models organizational types and concrete organizations.",
-      "link": "https://bremontix.xyz/lab/research/actor"
-     }
+    }
   ]
 }
