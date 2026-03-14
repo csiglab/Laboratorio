@@ -162,16 +162,14 @@
     .tag-pill:hover:not(.selected) { color: var(--fg); border-color: var(--border-hover); background: var(--tag-bg); }
     .tag-pill.selected { color: var(--fg); background: var(--tag-bg); border-color: var(--tag-selected-border); font-weight: 500; }
 
-    /* Dropdown Panel - PUSHES CONTENT DOWN (Relative Position) */
+    /* Dropdown Panel */
     .search-dropdown {
-      position: relative; /* Back to relative to push content */
+      position: relative;
       margin-top: 8px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
       box-shadow: 0 16px 48px -8px var(--dropdown-shadow), 0 4px 12px -4px var(--dropdown-shadow);
-      
-      /* Display none/block for document flow */
       display: none;
       opacity: 0;
       transform: translateY(-8px);
@@ -184,7 +182,7 @@
       transform: translateY(0); 
     }
 
-    /* Dropdown Header - Laboratory style */
+    /* Dropdown Header */
     .dropdown-header {
       padding: 14px 18px;
       background: linear-gradient(180deg, var(--tag-bg) 0%, transparent 100%);
@@ -249,21 +247,12 @@
       overscroll-behavior: contain;
       padding: 0 10px 10px;
     }
-    .dropdown-results::-webkit-scrollbar {
-      width: 6px;
-    }
-    .dropdown-results::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .dropdown-results::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 3px;
-    }
-    .dropdown-results::-webkit-scrollbar-thumb:hover {
-      background: var(--border-hover);
-    }
+    .dropdown-results::-webkit-scrollbar { width: 6px; }
+    .dropdown-results::-webkit-scrollbar-track { background: transparent; }
+    .dropdown-results::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .dropdown-results::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
 
-    /* Dropdown Item - Matches card aesthetic */
+    /* Dropdown Item */
     .search-dropdown-item {
       position: relative;
       padding: 12px 14px;
@@ -294,9 +283,7 @@
       transform: translateX(2px);
     }
     .search-dropdown-item:hover::before,
-    .search-dropdown-item.active::before {
-      opacity: 1;
-    }
+    .search-dropdown-item.active::before { opacity: 1; }
 
     .dropdown-item-icon {
       width: 36px;
@@ -310,9 +297,7 @@
       font-size: 14px;
       transition: color 120ms ease-out, background-color 120ms ease-out;
     }
-    .search-dropdown-item:hover .dropdown-item-icon {
-      color: var(--accent);
-    }
+    .search-dropdown-item:hover .dropdown-item-icon { color: var(--accent); }
     .dropdown-item-content { flex: 1; min-width: 0; }
     .dropdown-item-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -322,9 +307,7 @@
       margin-bottom: 2px;
       transition: color 120ms ease-out;
     }
-    .search-dropdown-item:hover .dropdown-item-name {
-      color: var(--accent);
-    }
+    .search-dropdown-item:hover .dropdown-item-name { color: var(--accent); }
     .dropdown-item-meta {
       display: flex;
       align-items: center;
@@ -348,35 +331,34 @@
     }
 
     /* Empty State */
-    .dropdown-empty {
-      padding: 32px 18px;
-      text-align: center;
-    }
+    .dropdown-empty { padding: 32px 18px; text-align: center; }
     .dropdown-empty-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--tag-bg);
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 18px;
+      width: 48px; height: 48px; margin: 0 auto 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--tag-bg); border-radius: 12px;
+      color: var(--muted); font-size: 18px;
     }
     .dropdown-empty-text {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 16px;
-      font-style: italic;
-      color: var(--muted);
+      font-size: 16px; font-style: italic; color: var(--muted);
     }
 
-    /* Card */
+    /* Card Styles */
     .entity-card { transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 200ms ease-out; background-color: var(--card); border-color: var(--border); }
     .entity-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background-color: var(--accent); opacity: 0; transition: opacity 150ms ease-out; }
     .entity-card:hover::before { opacity: 1; }
     .entity-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -8px var(--dropdown-shadow); }
     .entity-card:hover .card-title { color: var(--accent); }
+
+    /* Card Tag Pills */
+    .card-tag {
+      display: inline-flex; align-items: center; padding: 3px 8px; 
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; letter-spacing: 0.04em; color: var(--muted);
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 3px;
+      transition: all 100ms ease-out;
+    }
+    .entity-card:hover .card-tag { border-color: var(--border-hover); }
 
     /* View CTA */
     .view-cta { transition: color 150ms ease-out; color: var(--accent); }
@@ -465,7 +447,7 @@
             </div>
           </div>
 
-          <!-- Dropdown (Now pushes content down) -->
+          <!-- Dropdown -->
           <div id="searchDropdown" class="search-dropdown" role="listbox">
             <div class="dropdown-header">
               <div class="dropdown-header-title">Summary</div>
@@ -515,8 +497,7 @@
         </p>
       </div>
       <nav class="flex items-center gap-6">
-        <a href="#" class="footer-link text-xs">About</a>
-        <a href="research/" class="footer-link text-xs">Research Index</a>
+        <a href="https://github.com/csiglab/Laboratorio" target="_blank" class="footer-link text-xs">About</a>
         <a href="https://github.com/csiglab/Laboratorio" target="_blank" class="footer-link text-xs">Github</a>
       </nav>
       <div class="text-center sm:text-right">
@@ -745,17 +726,41 @@
       }
     }
 
+    // === ELEGANT & SIMPLE CARD RENDER ===
     function renderCard(entity) {
+      // Display max 3 tags to keep it clean
+      const displayTags = entity.tags.slice(0, 3);
+      
       return `
-        <article class="entity-card relative border rounded-xl p-5 shadow-sm" role="listitem">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex items-center gap-2">
-              <span class="text-base w-5 text-center"><i class="fas ${entity.icon}"></i></span>
-            </div>
+        <article class="entity-card relative border rounded-xl p-5 shadow-sm flex flex-col h-full" role="listitem">
+          
+          <!-- Header: Category & Icon -->
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-wider uppercase text-accent font-medium">
+              ${entity.category}
+            </span>
+            <span class="text-base w-5 text-center text-muted opacity-60">
+              <i class="fas ${entity.icon}"></i>
+            </span>
           </div>
-          <h3 class="card-title font-display text-lg font-medium text-fg mb-1 transition-colors duration-150">${entity.name}</h3>
-          <p class="text-sm text-muted leading-relaxed mb-3 line-clamp-2">${entity.description}</p>
-          <div class="flex items-center justify-between pt-3 border-t border-border">
+
+          <!-- Title -->
+          <h3 class="card-title font-display text-lg font-medium text-fg mb-2 transition-colors duration-150">
+            ${entity.name}
+          </h3>
+          
+          <!-- Description -->
+          <p class="text-sm text-muted leading-relaxed mb-4 flex-grow line-clamp-2">
+            ${entity.description}
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            ${displayTags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
+          </div>
+
+          <!-- Footer: Lab & Link -->
+          <div class="flex items-center justify-between pt-3 border-t border-border mt-auto">
             <span class="font-mono text-[10px] text-muted">${entity.lab}</span>
             <a href="${entity.link}" target="_blank" class="view-cta inline-flex items-center gap-1 text-xs font-medium">
               <span>View</span>
