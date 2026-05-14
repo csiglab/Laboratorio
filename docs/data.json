@@ -144,6 +144,16 @@
       "tags": ["toolbox"],
       "description": "A framework for rendering epistemic practice intelligible and systematically enhancing epistemic capacity.",
       "link": "https://bremontix.xyz/toolbox/epistemica"
+    },
+    {        
+      "id": 16,
+      "name": "Index",
+      "category": "Proiectum",
+      "lab": "Laboratorium",
+      "icon": "fa-flask",
+      "tags": ["toolbox"],
+      "description": "An Index of tools, documents, etc.",
+      "link": "https://bremontix.xyz/toolbox"
     }
   ]
 }
