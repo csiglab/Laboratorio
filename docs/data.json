@@ -103,7 +103,7 @@
       "icon": "fa-boxes",
       "tags": ["products", "market history", "economic analysis", "trade", "goods and services", "innovation"],
       "description": "Product Space is a representation of all products (goods and services) present in the market throughout history.",
-      "link": "https://bremontix.xyz/lab/pending.html"
+      "link": "https://bremontix.xyz/lab/research/product/"
     },
     {
       "id": 11,
@@ -113,7 +113,7 @@
       "icon": "fa-cogs",
       "tags": ["technology", "technical objects", "production techniques", "innovation", "industrial analysis", "engineering", "patents"],
       "description": "Technique Space is a representation of the technical core (techniques and technical objects) underpinning production throughout history.",
-      "link": "https://bremontix.xyz/lab/pending.html"
+      "link": "https://bremontix.xyz/lab/research/stecne/"
     },
     {
       "id": 13,
