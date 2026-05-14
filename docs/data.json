@@ -124,6 +124,26 @@
       "tags": ["research", "science", "technical studies", "innovation", "non-enterprise research"],
       "description": "Research Space represents the technical or scientific research conducted by non-enterprise entities.",
       "link": "https://bremontix.xyz/lab/pending.html"
+    },
+    {
+      "id": 14,
+      "name": "Tecnica",
+      "category": "Proiectum",
+      "lab": "Laboratorium",
+      "icon": "fa-flask",
+      "tags": ["toolbox"],
+      "description": " Research Space represents the technical or scientific research conducted by non-enterprise entities.",
+      "link": "https://bremontix.xyz/toolbox/tecnica"
+    },
+    {        
+      "id": 15,
+      "name": "Epistemica",
+      "category": "Proiectum",
+      "lab": "Laboratorium",
+      "icon": "fa-flask",
+      "tags": ["toolbox"],
+      "description": "A framework for rendering epistemic practice intelligible and systematically enhancing epistemic capacity.",
+      "link": "https://bremontix.xyz/toolbox/epistemica"
     }
   ]
 }
